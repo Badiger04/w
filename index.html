@@ -35,7 +35,7 @@ body::before {
   justify-content: center;
   align-items: center;
 
-  padding: 10px; /* less spacing */
+  padding: 5px; /* reduce spacing */
 
   opacity: 0;
   transform: translateY(40px);
@@ -71,13 +71,17 @@ p {
 
 .invite-text {
   margin: 2px 0;
-  line-height: 1.1;
+  line-height: 1.3;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
+  font-family: 'Cormorant Garamond'; /* match invite line style */
 }
 
 /* GANESHA */
 .ganesha {
   width: 100px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   border-radius: 50%;
   padding: 8px;
   background: rgba(255,255,255,0.2);
@@ -87,24 +91,37 @@ p {
   height: auto;
 }
 
-/* BOTTOM RIGHT IMAGE */
-.corner-image {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 30vw;        /* increased size */
-  max-width: 260px;   /* bigger for desktop */
-  min-width: 100px;   /* ensures visibility */
-  height: auto;
-  z-index: 1;
+
+  .bg-image {
+    position: fixed;
+    bottom: 0vh; /* responsive bottom spacing */
+    left: 50%;
+    transform: translate(-50%, 40px);
+    width: 70vw;
+    max-width: 450px;
+    opacity: 0;
+    filter: blur(1px) brightness(1) sepia(0.25);
+    transition: opacity 2s ease, transform 4s ease;
+    z-index: 0;
+    padding: 0 5vw; /* responsive side spacing */
+    box-sizing: border-box;
+  }
+
+.bg-image.show {
+  opacity: 0.35; /* visible but still background */
+  transform: translate(-50%, 0); /* stays centered responsively */
+}
+
+.section {
+  position: relative;
 }
 
 /* COUNTDOWN */
 #countdown {
-  font-size: 28px;
+  font-size: 100px; /* increased size */
   color: rgb(56, 56, 8);
-  font-style:'Cormorant Garamond', cursive
-
+  font-family: 'Cormorant Garamond', cursive;
+  font-weight: bold;
 }
 .wedding-date {
   font-size:50px;
@@ -131,7 +148,7 @@ p {
 
 .venue {
   font-size: 16px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -159,7 +176,7 @@ font-size: 3cm;
   font-size: 40px;
   color:rgb(58, 58, 37) ;
   font-weight:lighter;
-
+  margin-bottom: 0px; /* tighter spacing */
 }
 .date-text {
   margin-top: -60px;   /* move upwards */
@@ -173,11 +190,12 @@ h1 {
 
 /* MONOGRAM */
 .monogram {
-  width: 30vw;        /* bigger */
-  max-width: 240px;   /* increase desktop size */
-  min-width: 120px;   /* ensure visibility */
-  margin-top: 12px;
+  width: 4vw;
+  max-width: 240px;
+  min-width: 400px;
+  margin-top: -100px; /* reduce gap (move closer to Save the Date) */
   height: auto;
+  margin-bottom: -100px;
 }
 
 /* RESPONSIVE DESIGN */
@@ -187,7 +205,7 @@ h1 {
   p { font-size: 14px; }
 
   .wedding-date { font-size: 30px; }
-  #countdown { font-size: 20px; }
+  #countdown { font-size: 40px; } /* increased for mobile */
 
   .ganesha { width: 80px; }
 
@@ -203,7 +221,7 @@ h1 {
 @media (min-width: 1200px) {
   h1 { font-size: 60px; }
   .wedding-date { font-size: 55px; }
-  #countdown { font-size: 32px; }
+  #countdown { font-size: 80px; } /* larger for big screens */
 }
 
 @media (max-width: 480px) {
@@ -221,26 +239,29 @@ h1 {
 <div class="section">
   <img src="images/ganesha.png" class="ganesha">
   <h2 class="save-date">Save the Date</h2>
-  <img src="images/monogram.png" class="monogram">
+  <img src="images/ monogram.png" class="monogram">
 </div>
 
 <!-- SECTION 2 -->
-<div class="section">
+<div class="section" style="margin-top:-20px;">
   <h1>Vineeth S Nair</h1> <h1>&</h1> <h1>Meghna Badiger</h1>
   <p class="invite-text">INVITE YOU TO JOIN THEIR WEDDING</p><p class="invite-text">CELEBRATION ON</p>
   
   <h3 class="wedding-date">Sunday, April 26, 2026</h3>
   <h3 class="wedding-date">10:30 Am to 12:30 Pm</h3>
   <h2 id="countdown"></h2>
+  <p class="invite-text">
+    your presence and blessings will make this day<br>truly special for us
+  </p>
 </div>
 
 <!-- SECTION 3 -->
-<div class="section">
+<div class="section" style="margin-top:-150px;">
   
   <p class="venue">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" fill="#383808" viewBox="0 0 24 24" style="margin-right:6px; vertical-align:middle;">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#383808" viewBox="0 0 24 24" style="margin-right:6px; vertical-align:middle;">
+    <path d="M12 22s8-6.58 8-12a8 8 0 1 0-16 0c0 5.42 8 12 8 12zm0-11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+  </svg>
     BPCL Marine Drive Auditorium, Ernakulam
   </p>
 
@@ -251,7 +272,7 @@ h1 {
   </p>
 </div>
 
-
+<img src="images/bottom.png" class="bg-image">
 
 <script>
 /* SCROLL ANIMATION */
@@ -265,9 +286,20 @@ window.addEventListener('scroll', () => {
     if (top < trigger) {
       sec.classList.add('show');
     }
+
   });
 });
 
+const bgImage = document.querySelector('.bg-image');
+
+window.addEventListener('scroll', () => {
+  const triggerPoint = window.innerHeight * 0.85;
+  const sectionTop = sections[1].getBoundingClientRect().top;
+
+  if (sectionTop < triggerPoint) {
+    bgImage.classList.add('show');
+  }
+});
 
 /* COUNTDOWN */
 const weddingDate = new Date("April 26, 2026").getTime();
@@ -285,8 +317,6 @@ setInterval(() => {
 }, 1000);
 </script>
 
-<!-- BOTTOM RIGHT IMAGE -->
-<img src="images/bottom.png" class="corner-image">
 
 </body>
 </html>
